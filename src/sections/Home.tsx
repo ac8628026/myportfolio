@@ -49,7 +49,7 @@ const Home = ({ ref,projectRef }: HomeProps) => {
         </div>
       </div>
       <div className="flex flex-1 hidden lg:block justify-center px-6">
-         <div className="animate-bounce-slow  card-glass p-4 w-60 h-80 ">
+         <div className="animate-soft-bounce  card-glass p-4 w-60 h-80 ">
         
       </div>
       </div>
