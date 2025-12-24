@@ -17,19 +17,28 @@ const App = () => {
   const skillsRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
 
-
   return (
     <div className="min-h-screen bg-dark-300">
-      <Sidebar skillsRef={skillsRef} contactRef={contactRef} experianceRef = {experienceRef} homeRef={homeRef} projectsRef = {projectsRef} isOpen={isOpen} setIsOpen={setIsOpen} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+      <Sidebar
+        skillsRef={skillsRef}
+        contactRef={contactRef}
+        experianceRef={experienceRef}
+        homeRef={homeRef}
+        projectsRef={projectsRef}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+      />
 
-      <div className={`${isOpen ?'md:ml-64':' md:ml-14'} text-dark-200`}>
+      <main className={`${isOpen ? "md:ml-64" : " md:ml-14"} text-dark-200`}>
         <Home ref={homeRef} projectRef={projectsRef} />
         <Projects ref={projectsRef} />
         <Experience ref={experienceRef} />
-        <Skills ref = {skillsRef}/>
-        <Contact ref = {contactRef}/>
+        <Skills ref={skillsRef} />
+        <Contact ref={contactRef} />
         <Footer />
-      </div>
+      </main>
     </div>
   );
 };
