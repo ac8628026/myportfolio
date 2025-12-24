@@ -1,27 +1,11 @@
-import {
-  JavaScriptIcon,
-  TypeScriptIcon,
-  TailwindIcon,
-  ReactIcon,
-  NodeJSIcon,
-  ExpressIcon,
-  MongoDBIcon,
-} from "../icons/Skillsicon";
+import { mySkills } from "./data";
 
 type sectionProps = {
   ref: React.RefObject<HTMLDivElement | null>;
 };
 
 const Skills = ({ ref }: sectionProps) => {
-  const mySkills = [
-    { Icon: ExpressIcon, title: "Express" },
-    { Icon: JavaScriptIcon, title: "JavaScript" },
-    { Icon: MongoDBIcon, title: "MongoDB" },
-    { Icon: NodeJSIcon, title: "Node" },
-    { Icon: ReactIcon, title: "React" },
-    { Icon: TailwindIcon, title: "Tailwind" },
-    { Icon: TypeScriptIcon, title: "TypeScript" },
-  ];
+ 
   return (
     <section ref={ref} className="py-12 w-full ">
       <div className=" mx-auto px-4 sm:px-6 max-w-6xl flex flex-col items-center">

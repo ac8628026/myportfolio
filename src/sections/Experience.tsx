@@ -1,4 +1,5 @@
 import ExperiaceCard from "../components/ExperiaceCard";
+import {experianceData} from "./data"
 
 type HomeProps = {
   ref: React.RefObject<HTMLDivElement | null>;
@@ -18,9 +19,11 @@ const Experience = ({ ref }: HomeProps) => {
         <div className="flex gap-8 w-full justify-center  p-3 relative">
           <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
           <div className="flex flex-col gap-8 w-full pl-4">
-            <ExperiaceCard />
-            <ExperiaceCard />
-            <ExperiaceCard />
+           {experianceData.map((data,ind)=>{
+            return(
+              <ExperiaceCard data = {data} key={ind}/>
+            )
+           })}
           </div>
         </div>
       </div>

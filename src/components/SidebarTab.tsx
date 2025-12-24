@@ -1,5 +1,6 @@
 import clsx from "clsx";
-interface SidebarTabProps {
+
+type SidebarTabProps = {
   onClick?: () => void;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;

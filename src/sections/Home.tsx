@@ -1,15 +1,19 @@
 import { Download, FolderKanban } from "lucide-react";
 import Button from "../components/ui/Button";
+
+
+type sectionRef = React.RefObject<HTMLDivElement | null>;
+
 type HomeProps = {
-  ref: React.RefObject<HTMLDivElement | null>;
-  projectRef: React.RefObject<HTMLDivElement | null>;
+  ref: sectionRef;
+  projectRef: sectionRef;
 };
 
 const Home = ({ ref, projectRef }: HomeProps) => {
   const scrollToSection = (
-    sectionRef: React.RefObject<HTMLDivElement | null>
+    sectionRefs: sectionRef
   ) => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    sectionRefs.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

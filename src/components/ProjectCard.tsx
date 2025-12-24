@@ -1,35 +1,55 @@
 import { ExternalLink, Github } from "lucide-react";
 
-const ProjectCard = () => {
-  const techStacks = ["Next.js", "TypeScript", "Prisma", "Stripe"];
+type PropsType = {
+  data: {
+    imgLink?: string;
+    title: string;
+    description: string;
+    techStacks: string[];
+    liveLink: string;
+    githubLink: string;
+  };
+};
 
+const ProjectCard = ({ data }: PropsType) => {
   return (
-    <div className="card-glass flex flex-col w-62 md:w-52 lg:w-62  h-96 p-6 flex items-center ">
-      <h3 className="text-2xl text-white/80 font-semibold">
-        {" "}
-        E-Commerce Plateform
+    <div className="card-glass w-full flex flex-col gap-4 p-6">
+      <h3 className="text-xl font-semibold text-white/90">
+        {data.title}
       </h3>
 
-      <p className="text-sm py-4">
-        Full-stack marketplace with real-time inventory management
+      <p className="text-sm text-white/70 leading-relaxed">
+        {data.description}
       </p>
 
-      <div className="flex gap-2 flex-wrap ">
-        {techStacks.map((tec, index) => (
-          <div className="card-glass py-1 px-3" key={index}>
+      <div className="flex flex-wrap gap-2 text-xs">
+        {data.techStacks.map((tec, index) => (
+          <span key={index} className="card-glass px-3 py-1">
             {tec}
-          </div>
+          </span>
         ))}
       </div>
-      <div className="flex justify-around py-4 w-full">
-        <div className="flex gap-1 cursor-pointer">
-          <ExternalLink />
-          <span>Demo</span>
-        </div>
-        <div className="flex gap-1 cursor-pointer">
-          <Github />
-          <span>Code</span>
-        </div>
+
+      <div className="mt-auto flex justify-around pt-4 text-sm">
+        <a
+          href={data.liveLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 hover:text-white transition"
+        >
+          <ExternalLink size={16} />
+          Demo
+        </a>
+
+        <a
+          href={data.githubLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 hover:text-white transition"
+        >
+          <Github size={16} />
+          Code
+        </a>
       </div>
     </div>
   );

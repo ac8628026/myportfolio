@@ -1,15 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import SidebarTab from "./SidebarTab";
-import {
-  House,
-  FolderKanban,
-  PanelLeftClose,
-  Briefcase,
-  Zap,
-  Mail,
-  PanelRightClose,
-} from "lucide-react";
+import {House,FolderKanban,PanelLeftClose,Briefcase,Zap,Mail,PanelRightClose} from "lucide-react";
 
 type sectionRef = React.RefObject<HTMLDivElement | null>;
 
@@ -43,6 +35,13 @@ const Sidebar = ({
     setMobileOpen(false);
   };
 
+  const sections = [
+    { title: "Home", icon: House, isOpen: isOpen, ref: homeRef },
+    { title: "Projects", icon: FolderKanban, isOpen: isOpen, ref: projectsRef },
+    { title: "Experiance",icon: Briefcase,isOpen: isOpen,ref: experianceRef },
+    { title: "Skills", icon: Zap, isOpen: isOpen, ref: skillsRef },
+    { title: "Contact", icon: Mail, isOpen: isOpen, ref: contactRef },
+  ];
   return (
     <>
       <button
@@ -95,36 +94,17 @@ const Sidebar = ({
             isOpen ? "items-start px-4" : "items-center px-2"
           )}
         >
-          <SidebarTab
-            onClick={() => toScroll(homeRef)}
-            isOpen={isOpen}
-            icon={House}
-            title="Home"
-          />
-          <SidebarTab
-            onClick={() => toScroll(projectsRef)}
-            isOpen={isOpen}
-            icon={FolderKanban}
-            title="Projects"
-          />
-          <SidebarTab
-            onClick={() => toScroll(experianceRef)}
-            isOpen={isOpen}
-            icon={Briefcase}
-            title="Experiance"
-          />
-          <SidebarTab
-            onClick={() => toScroll(skillsRef)}
-            isOpen={isOpen}
-            icon={Zap}
-            title="Skills"
-          />
-          <SidebarTab
-            onClick={() => toScroll(contactRef)}
-            isOpen={isOpen}
-            icon={Mail}
-            title="Contact"
-          />
+          {sections.map((section, ind) => {
+            return (
+              <SidebarTab
+                key={ind}
+                title={section.title}
+                onClick={() => toScroll(section.ref)}
+                isOpen={section.isOpen}
+                icon={section.icon}
+              />
+            );
+          })}
         </div>
       </aside>
     </>

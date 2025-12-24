@@ -1,4 +1,5 @@
 import ProjectCard from "../components/ProjectCard";
+import { ProjectData } from "./data";
 
 type ProjectsProps = {
   ref: React.RefObject<HTMLDivElement | null>;
@@ -16,14 +17,13 @@ const Projects = ({ ref }: ProjectsProps) => {
         </h2>
 
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {
+            ProjectData.map((project,ind)=>{
+              return(
+                <ProjectCard data = {project} key={ind}/>
+              )
+            })
+          }
         </div>
       </div>
     </section>

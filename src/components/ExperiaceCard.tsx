@@ -1,11 +1,18 @@
-const ExperiaceCard = () => {
-  const workDone = [
-    "Reduced page load time by 60%",
-    "Led team of 8 developers",
-    "Implemented CI/CD pipeline",
-  ];
 
-  const skillsTech = ["React", "Express", "next.js"];
+type cardProps = {
+  data:{
+  role:string,
+  company:string,
+  duration:string,
+  description:string,
+  points:string[],
+  skills:string[]
+  }
+  
+}
+
+
+const ExperiaceCard = ({data}:cardProps) => {
 
   return (
     <div className="flex gap-6 relative -translate-x-8 ">
@@ -15,25 +22,24 @@ const ExperiaceCard = () => {
         <div className="flex justify-between ">
           <div className="flex flex-col ">
             <div className="text-white/60 text-xl font-mono font-semibold">
-              FullStact Developer
+              {data.role}
             </div>
-            <span>Company Name</span>
+            <span>{data.company}</span>
           </div>
           <div className=" flex h-7 items-center justify-center card-glass py-1 px-3">
             {" "}
-            2023 - 2024{" "}
+            {data.duration}{" "}
           </div>
         </div>
 
         {/* small description of work at company */}
         <div>
-          Leading development of enterprise SaaS platform. Architected
-          microservices handling 1M+ daily requests.
+          {data.description}
         </div>
 
         {/* Points of work done */}
         <div className="flex flex-col gap-1">
-          {workDone.map((pnt, index) => {
+          {data.points.map((pnt, index) => {
             return (
               <div
                 key={index}
@@ -49,7 +55,7 @@ const ExperiaceCard = () => {
 
         {/* skills */}
         <div className="flex gap-1 flex-wrap">
-          {skillsTech.map((tech, index) => {
+          {data.skills.map((tech, index) => {
             return (
               <div key={index} className="card-glass py-1 px-3">
                 {tech}
