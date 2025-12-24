@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding:0;
+}
+
+@theme{
+
+  --color-dark-100: rgb(180, 180, 180);
+  --color-dark-200: rgb(160, 160, 160);
+  --color-dark-300: rgb(36, 39, 40);
+  --color-dark-400 :rgba(23, 23, 23);
+  --color-dark-600 :rgba(14, 14, 14);
+  --color-dark-800 :rgba(11, 11, 11);
+}
+
+@layer utilities {
+  .animate-bounce-slow {
+    animation: bounce 3s infinite; 
+  }
+}
+
+
+@layer components {
+  .card-glass {
+    @apply
+      relative overflow-hidden
+      rounded-3xl
+      border border-white/10
+
+      bg-[linear-gradient(135deg,hsla(220,30%,100%,0.03)_0%,hsla(220,30%,100%,0.02)_50%,hsla(220,30%,100%,0.03)_100%)]
+
+      backdrop-blur-[40px] backdrop-saturate-[180%]
+
+      shadow-[0_8px_32px_hsla(220,50%,0%,0.4),inset_0_1px_0_hsla(180,60%,90%,0.2),inset_0_-1px_0_hsla(220,30%,0%,0.2)]
+
+      transition-all duration-500 ease-out;
+  }
+
+  .card-glass:hover {
+    @apply
+      -translate-y-1
+      scale-[1.04]
+
+      shadow-[0_20px_60px_hsla(220,50%,0%,0.5),0_0_80px_hsla(200,100%,80%,0.15),inset_0_1px_0_hsla(180,60%,90%,0.2),inset_0_-1px_0_hsla(220,30%,0%,0.2)];
+  }
+
+  .card-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      hsla(200,80%,70%,0.1) 25%,
+      transparent 50%,
+      hsla(200,80%,70%,0.1) 75%,
+      transparent 100%
+    );
+
+    background-size: 400% 400%;
+    animation: glassShimmer 8s ease-in-out infinite;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .card-glass:hover::before {
+    opacity: 1;
+  }
+}
+
+@keyframes glassShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
