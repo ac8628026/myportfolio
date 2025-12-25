@@ -7,7 +7,7 @@ type HomeProps = {
 
 const Experience = ({ ref }: HomeProps) => {
   return (
-    <section ref={ref} className="w-full py-12">
+    <section ref={ref} className="w-full py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 flex flex-col items-center">
         <p className="flex uppercase tracking-[0.2em] font-semibold">
           Career Journey

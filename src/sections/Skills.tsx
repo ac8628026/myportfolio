@@ -7,7 +7,7 @@ type sectionProps = {
 const Skills = ({ ref }: sectionProps) => {
  
   return (
-    <section ref={ref} className="py-12 w-full ">
+    <section ref={ref} className="py-8 w-full ">
       <div className=" mx-auto px-4 sm:px-6 max-w-6xl flex flex-col items-center">
         <p className="flex uppercase tracking-[0.2em] font-semibold">
           secret sauce

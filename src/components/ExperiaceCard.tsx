@@ -19,14 +19,14 @@ const ExperiaceCard = ({data}:cardProps) => {
       <div className="absolute animate-ping  mt-4 h-2 w-2 rounded-full bg-white shadow-lg"></div>
       <div className=" relative  mt-4 h-2 w-2 rounded-full bg-white shadow-lg"></div>
       <div className="card-glass flex flex-col min-w-52 max-w-196 grow  p-6 gap-4 w-full ">
-        <div className="flex justify-between ">
+        <div className="flex flex-col sm:flex-row justify-between ">
           <div className="flex flex-col ">
             <div className="text-white/60 text-xl font-mono font-semibold">
               {data.role}
             </div>
             <span>{data.company}</span>
           </div>
-          <div className=" flex h-7 items-center justify-center card-glass py-1 px-3">
+          <div className=" flex h-7 items-center min-w-36 justify-center card-glass py-1 px-3">
             {" "}
             {data.duration}{" "}
           </div>

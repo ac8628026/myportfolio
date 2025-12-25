@@ -14,7 +14,7 @@ const Contact = ({ ref }: ProjectsProps) => {
     { title: "Twitter", link: "", icon: <Twitter /> },
   ];
   return (
-    <section ref={ref} className="w-full py-16">
+    <section ref={ref} className="w-full py-8">
       <div className=" mx-auto max-w-6xl px-4 sm:px-6 flex flex-col items-center">
         <p className="flex uppercase tracking-[0.2em] font-semibold">
           Get in touch

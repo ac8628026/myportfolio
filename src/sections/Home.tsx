@@ -17,7 +17,7 @@ const Home = ({ ref, projectRef }: HomeProps) => {
   };
 
   return (
-    <section ref={ref} className="min-h-screen w-full py-12">
+    <section ref={ref} className=" md:min-h-screen w-full py-4 md:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 grid gap-12 lg:grid-cols-2 items-center  relative ">
         <div className="flex-2 px-12 py-20 ">
           <div className="flex flex-col gap-3 ">
