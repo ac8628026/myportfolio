@@ -1,6 +1,6 @@
 import { Download, FolderKanban } from "lucide-react";
 import Button from "../components/ui/Button";
-
+import { motion } from "framer-motion";
 
 type sectionRef = React.RefObject<HTMLDivElement | null>;
 
@@ -10,14 +10,18 @@ type HomeProps = {
 };
 
 const Home = ({ ref, projectRef }: HomeProps) => {
-  const scrollToSection = (
-    sectionRefs: sectionRef
-  ) => {
+  const scrollToSection = (sectionRefs: sectionRef) => {
     sectionRefs.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section ref={ref} className=" md:min-h-screen w-full py-4 md:py-8">
+    <motion.section
+      initial={{ opacity: 0, x: -80 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      ref={ref}
+      className=" md:min-h-screen w-full py-4 md:py-8"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 grid gap-12 lg:grid-cols-2 items-center  relative ">
         <div className="flex-2 px-12 py-20 ">
           <div className="flex flex-col gap-3 ">
@@ -54,10 +58,10 @@ const Home = ({ ref, projectRef }: HomeProps) => {
           </div>
         </div>
         <div className="flex flex-1 hidden lg:block justify-center px-6">
-          <div className="animate-soft-bounce card-glass p-4 w-60 h-80 "></div>
+          <div className="animate-bounce-slow card-glass p-4 w-60 h-80 "></div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

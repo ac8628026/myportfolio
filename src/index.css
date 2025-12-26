@@ -7,14 +7,21 @@ body {
 }
 
 @theme{
-
   --color-dark-100: rgb(180, 180, 180);
   --color-dark-200: rgb(160, 160, 160);
   --color-dark-300: rgb(36, 39, 40);
   --color-dark-400 :rgba(23, 23, 23);
   --color-dark-600 :rgba(14, 14, 14);
   --color-dark-800 :rgba(11, 11, 11);
-  --animate-soft-bounce: bounce 3s ease-in-out infinite;
+  --shadow-glass: 0 8px 32px hsla(220,50%,0%,0.4),
+                  inset 0 1px 0 hsla(180,60%,90%,0.2),
+                  inset 0 -1px 0 hsla(220,30%,0%,0.2);
+  --shadow-glass-hover: 0_20px_60px_hsla(220,50%,0%,0.5),
+                        0_0_80px_hsla(200,100%,80%,0.15),
+                        inset_0_1px_0_hsla(180,60%,90%,0.2),
+                        inset_0_-1px_0_hsla(220,30%,0%,0.2)
+  --color-glass : linear-gradient(135deg,hsla(220,30%,100%,0.03)_0%,hsla(220,30%,100%,0.02)_50%,hsla(220,30%,100%,0.03)_100%)
+  
 }
 
 @layer utilities {
@@ -31,12 +38,10 @@ body {
       rounded-3xl
       border border-white/10
 
-      bg-[linear-gradient(135deg,hsla(220,30%,100%,0.03)_0%,hsla(220,30%,100%,0.02)_50%,hsla(220,30%,100%,0.03)_100%)]
+      bg-[var(--color-glass)]
 
-      backdrop-blur-[40px] backdrop-saturate-[180%]
-
-      shadow-[0_8px_32px_hsla(220,50%,0%,0.4),inset_0_1px_0_hsla(180,60%,90%,0.2),inset_0_-1px_0_hsla(220,30%,0%,0.2)]
-
+      backdrop-blur-[28px] backdrop-saturate-[180%]
+      shadow-[var(--shadow-glass)]
       transition-all duration-500 ease-out;
   }
 
@@ -44,8 +49,7 @@ body {
     @apply
       -translate-y-1
       scale-[1.04]
-
-      shadow-[0_20px_60px_hsla(220,50%,0%,0.5),0_0_80px_hsla(200,100%,80%,0.15),inset_0_1px_0_hsla(180,60%,90%,0.2),inset_0_-1px_0_hsla(220,30%,0%,0.2)];
+      shadow-[var(--shadow-glass-hover)];
   }
 
   .card-glass::before {

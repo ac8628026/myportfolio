@@ -1,6 +1,8 @@
 import { Linkedin, Mail, Send, Twitter } from "lucide-react";
 import Button from "../components/ui/Button";
 import { Github } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp } from "../animations/variants";
 
 type ProjectsProps = {
   ref: React.RefObject<HTMLDivElement | null>;
@@ -14,7 +16,14 @@ const Contact = ({ ref }: ProjectsProps) => {
     { title: "Twitter", link: "", icon: <Twitter /> },
   ];
   return (
-    <section ref={ref} className="w-full py-8">
+    <motion.section
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-100px" }}
+      ref={ref}
+      className="w-full min-h-screen py-8"
+    >
       <div className=" mx-auto max-w-6xl px-4 sm:px-6 flex flex-col items-center">
         <p className="flex uppercase tracking-[0.2em] font-semibold">
           Get in touch
@@ -85,7 +94,7 @@ const Contact = ({ ref }: ProjectsProps) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
