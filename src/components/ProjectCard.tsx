@@ -13,7 +13,7 @@ type PropsType = {
 
 const ProjectCard = ({ data }: PropsType) => {
   return (
-    <div className="card-glass w-full flex flex-col gap-4 p-6">
+    <div className="card-glass min-h-106 w-full flex flex-col gap-4 p-6">
       <h3 className="text-xl font-semibold text-white/90">
         {data.title}
       </h3>

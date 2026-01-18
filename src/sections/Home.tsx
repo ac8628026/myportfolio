@@ -39,7 +39,8 @@ const Home = ({ ref, projectRef }: HomeProps) => {
             </div>
           </div>
           <div className="mt-8 flex gap-4 flex-col sm:flex-row">
-            <Button
+            <a target="_blank" href="https://drive.google.com/file/d/1cFjVxMW8SX4Lf4XVFqHJKjH2e7S2uE5-/view?usp=sharing">
+             <Button
               onClick={() => {
                 console.log("submit");
               }}
@@ -47,6 +48,8 @@ const Home = ({ ref, projectRef }: HomeProps) => {
               icon={Download}
               variant={"primary"}
             />
+            </a>
+           
             <Button
               onClick={() => {
                 scrollToSection(projectRef);

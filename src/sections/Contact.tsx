@@ -1,20 +1,51 @@
-import { Linkedin, Mail, Send, Twitter } from "lucide-react";
+import {  Send } from "lucide-react";
 import Button from "../components/ui/Button";
-import { Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeUp } from "../animations/variants";
+import { socialLinks } from "./data";
+import { useState } from "react";
 
 type ProjectsProps = {
   ref: React.RefObject<HTMLDivElement | null>;
 };
 
 const Contact = ({ ref }: ProjectsProps) => {
-  const socialLinks = [
-    { title: "Github", link: "", icon: <Github /> },
-    { title: "LinkedIn", link: "", icon: <Linkedin /> },
-    { title: "Email", link: "", icon: <Mail /> },
-    { title: "Twitter", link: "", icon: <Twitter /> },
-  ];
+   const [result, setResult] = useState("Send Message");
+   const [formData,setFormData] = useState({name:"",email:"",message:""});
+
+  const handleSubmit = async () => {
+
+  const form = new FormData();
+  form.append("name", formData.name);
+  form.append("email", formData.email);
+  form.append("message", formData.message);
+  form.append("access_key", "376862a0-c2e7-4b42-bfa4-68c8871611fa");
+
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: form
+  });
+
+  const data = await response.json();
+  setResult(data.success ? "Success!" : "Error");
+  setTimeout(()=>{ 
+  setFormData({name:"",email:"",message:""})
+  setResult("Send Message")
+  },3000)
+  
+
+};
+
+
+ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+   console.log(formData)
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,      
+      [name]: value     
+    }));
+  };
+
   return (
     <motion.section
       variants={fadeUp}
@@ -38,6 +69,9 @@ const Contact = ({ ref }: ProjectsProps) => {
               <div>Name</div>
               <input
                 className="outline-none rounded-xl  card-glass py-2 px-4 "
+                name="name"
+                value={formData.name}
+                onChange={(e)=>handleChange(e)}
                 placeholder="Your Name"
                 type="text"
               />
@@ -47,6 +81,9 @@ const Contact = ({ ref }: ProjectsProps) => {
               <input
                 className="outline-none rounded-xl card-glass py-2 px-4 "
                 placeholder="your@email.com"
+                name="email"
+                value={formData.email}
+                onChange={(e)=>handleChange(e)}
                 type="text"
               />
             </div>
@@ -55,14 +92,15 @@ const Contact = ({ ref }: ProjectsProps) => {
               <textarea
                 className="outline-none rounded-xl card-glass py-2 px-4 h-40"
                 placeholder="Description "
+                 name="message"
+                value={formData.message}
+                onChange={(e)=>handleChange(e)}
               ></textarea>
             </div>
             <div className="w-full flex justify-center ">
               <Button
-                onClick={() => {
-                  console.log("submit");
-                }}
-                title={"Send Message"}
+                onClick={handleSubmit}
+                title={result}
                 icon={Send}
                 variant={"primary"}
               />
@@ -83,6 +121,7 @@ const Contact = ({ ref }: ProjectsProps) => {
                   <a
                     key={index}
                     href={lk.link}
+                    target="_blank"
                     className="flex items-center gap-3 px-6 py-4 card-glass hover:scale-105 transition"
                   >
                     {lk.icon}
