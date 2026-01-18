@@ -37,7 +37,7 @@ const Contact = ({ ref }: ProjectsProps) => {
 };
 
 
- const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+ const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
    console.log(formData)
     const { name, value } = e.target;
     setFormData((prevData) => ({
